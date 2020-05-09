@@ -26,12 +26,12 @@ function formatTest(name, unitPath, tmp) {
 }
 
 /*
-* Since we want to test diffrent config files and config files are 
+* Since we want to test diffrent config files and config files are
 * recognized automatically from root dir, we need to change cwd
 * every time. And since config file gets resolved only once when
 * you require the module(here ./src module) we need to clear cache of
 * require so when we change the directory, the module ./src/config gets
-* evaluated again and it recognizes config file in new cwd. 
+* evaluated again and it recognizes config file in new cwd.
 */
 function cleanCacheAndChageCwd(dir) {
   delete require.cache[require.resolve('../src/config')];
