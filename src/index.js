@@ -16,6 +16,7 @@ class Gue {
     this.componentRoot = config && config.componentRoot ? config.componentRoot : '';
     this.unitSource = config && config.unitSource ? config.unitSource : '';
     this.unitRoot = config && config.unitRoot ? config.unitRoot : './tests/unit/';
+    this.unitPostfix = config && config.unitPostfix ? config.unitPostfix : 'spec';
     this.distDir = distDir ?
       distDir :
       (this.componentRoot ?
@@ -100,7 +101,7 @@ class Gue {
   }
 
   makeUnitDistDir() {
-    return path.join(this.unitRoot, `${this.componentName}.js`);
+    return path.join(this.unitRoot, `${this.componentName}.${this.unitPostfix}.js`);
   }
 
   checkDirStatus(direcrories) {
