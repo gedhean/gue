@@ -1,9 +1,9 @@
 {
-  "name": "vue-gue",
+  "name": "@gedhean/vue-gue",
   "version": "0.2.0",
   "description": "Vue component generator",
   "repository": {
-    "url": "https://github.com/hosein2398/gue",
+    "url": "https://github.com/gedhean/gue",
     "type": "git"
   },
   "author": "Hosein2398<hosein2398@gmail.com>",
