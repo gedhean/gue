@@ -17,7 +17,7 @@
 
 Features
 * 📜 Generate Vue component
-* 🧰 Generate test file for the component 
+* 🧰 Generate test file for the component
 * ⚙️ Dynamic path for component
 * 📁 Configurable root directory for components and tests
 * 📝 Custom templates for components and test
@@ -39,7 +39,7 @@ You can define a directory which you want your component to be generated in.
 gue tab ./menu
 ```
 This will generate `tab` component in `./menu/tab.vue`
-> Consider behavior of directory parameter when you have a config file and you don't. [details](#usage)  
+> Consider behavior of directory parameter when you have a config file and you don't. [details](#usage)
 > For a consistent way to change root directory of components see  [config](#config-file).
 
 #### Generate test file
@@ -47,7 +47,7 @@ Now if you want a component and also it's corresponding unit test file you can d
 ```
 gue footer -u
 ```
-This will generate `footer` component in `./src/components/footer.vue` and also a test file in `./tests/unit/footer.js`
+This will generate `footer` component in `./src/components/footer.vue` and also a test file in `./tests/unit/footer.spec.js`
 > To change any of these directories see [config](#config-file)
 ## Usage
 General usage is like:
@@ -65,7 +65,7 @@ $ gue --help
 * &lt;componentName&gt; is mandatory.
 * [directory] is optional, and is a relative path.
   If you have a config file this will be a `subdirectory` of your [componentRoot](#options)
-  If you don't, then this will lead to generation of component in exact `direcroty` 
+  If you don't, then this will lead to generation of component in exact `direcroty`
 * [options] are optional, available options are `-u` which will generate test file, and `-t` which is used to define which template for components to use.
 
 ## Config file
@@ -76,6 +76,7 @@ Here are available options for config file:
 * `componentSource`: path to custom component template. Or an object to define [multiple templates](#using-multiple-custom-templates).
 * `unitRoot`:  directory which test  will be generated in. should be a relative path.
 * `unitSource`: path to custom test file template.
+* `unitPostfix`: custom postfix for test file name (default is `spec` e.g `foo.spec.js`).
 
 An example of a config file with all options:
 ```json
@@ -83,10 +84,11 @@ An example of a config file with all options:
   "componentRoot":"./front-end/src/components",
   "unitRoot":"./front-end/test",
   "componentSource":"./myTemplates/myVueTemplate.vue",
-  "unitSource":"./myTemplates/myTestTemplate.js"
+  "unitSource":"./myTemplates/myTestTemplate.js",
+  "unitPostfix": "spec"
 }
 ```
-Now if you run gue to create a `clock` component in your project, it'll generate it in `./front-end/src/components/clock.vue`. 
+Now if you run gue to create a `clock` component in your project, it'll generate it in `./front-end/src/components/clock.vue`.
 If you run following command in the same project:
 ```
 gue title ./header
@@ -95,6 +97,7 @@ Will generate `./front-end/src/components/header/title.vue`
 
 #### Custom templates
 As said you can use custom templates in Gue, define path to them with `componentSource` and `unitSource` so that Gue will use them instead of it's default ones.
+
 ##### Variables
 In your component template you can use variable `<%NAME%>` and Gue will replace it with name of component when generating.
 And also in test template you use `<%NAME%>` and `<%PATH%>` which will be replaced with path where component is located, relative to path of test file.
@@ -143,6 +146,6 @@ You can define one of your templates as `default` one, so that you don't have to
 ```
 Now if you type any command without `-t`, component template will be used.
 ```
-gue foo 
+gue foo
 ```
 Will use `component` template to generate foo component. No need of `-t component`
